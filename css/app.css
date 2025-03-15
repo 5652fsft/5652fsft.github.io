@@ -588,6 +588,9 @@ details summary::before {
 .i-cloud-music:before {
   content: "\e76a";
 }
+.i-pixiv:before {
+  content: "\e679";
+}
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
