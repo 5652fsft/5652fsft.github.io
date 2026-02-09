@@ -1,0 +1,419 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="悲剧并非终结，而是希望的起始。" href="https://5652fsft.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="悲剧并非终结，而是希望的起始。" href="https://5652fsft.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="悲剧并非终结，而是希望的起始。" href="https://5652fsft.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://5652fsft.github.io/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+
+
+
+  <title>
+线段树 - 数据结构 - OI |
+5652 = 悲剧并非终结，而是希望的起始。</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">线段树
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-03-01 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">5652</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="/assets/004.jpg">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/OI/" itemprop="item" rel="index" title="分类于 OI"><span itemprop="name">OI</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="item" rel="index" title="分类于 数据结构"><span itemprop="name">数据结构</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://5652fsft.github.io/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="5652">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="悲剧并非终结，而是希望的起始。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>线段树是用来<mark>维护区间信息</mark>的数据结构。</p>
+<p>线段树可在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 的时间复杂度内实现：<br />
+<strong>单点修改</strong>、<strong>区间修改</strong>（区间加、区间乘、区间赋值等）、<strong>区间查询</strong>（区间求和、区间最值等）等操作。</p>
+<p>线段树<strong>将每个长度不为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 的区间划分成左右两个区间递归求解，把整个线段划分为一个树形结构，通过合并左右两区间信息来求得该区间的信息</strong>。这样可方便进行大部分的区间操作。</p>
+<h2 id="建树"><a class="anchor" href="#建树">#</a> 建树</h2>
+<p>设线段树的根节点编号为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ，用数组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span></span></span></span> 来保存我们的线段树， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">d_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 用来保存线段树上编号为  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 的节点的值（这里每个节点所维护的值就是这个节点所表示的区间总和）。</p>
+<p><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">d_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的左儿子节点就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mrow><mn>2</mn><mo>×</mo><mi>i</mi></mrow></msub></mrow><annotation encoding="application/x-tex">d_{2\times i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.902771em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>，右儿子节点就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mrow><mn>2</mn><mo>×</mo><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">d_{2\times i+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.902771em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span> 。如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">d_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表示的是区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mi>t</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[s, t]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">t</span><span class="mclose">]</span></span></span></span> 的话，其左儿子节点表示的是区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>s</mi><mo>+</mo><mi>t</mi></mrow><mn>2</mn></mfrac></mstyle><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[s, \cfrac{s+t}{2}]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5899999999999999em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mclose">]</span></span></span></span> ，右儿子表示的是区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>s</mi><mo>+</mo><mi>t</mi></mrow><mn>2</mn></mfrac></mstyle><mo separator="true">,</mo><mi>t</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[\cfrac{s+t}{2}, t]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mopen">[</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5899999999999999em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">t</span><span class="mclose">]</span></span></span></span></strong>。</p>
+<p>在实现时用递归建树。设当前的根节点为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span> ，则：</p>
+<ol>
+<li><strong>如果根节点管辖的区间长度已经是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ，可直接根据 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span> 数组上相应位置的值初始化该节点。</strong></li>
+<li><strong>否则将该区间从中点处分割为两个子区间，分别进入左右子节点递归建树，最后合并两个子节点的信息。</strong></li>
+</ol>
+<h2 id="区间查询"><a class="anchor" href="#区间查询">#</a> 区间查询</h2>
+<p>如果要查询的区间是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> ，则可以将其<strong>拆</strong>成最多为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\log n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span></span></span></span> 个<strong>极大</strong>的区间，合并这些区间即可求出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 的答案。</p>
+<p>递归查询时，设 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mi>t</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[s, t]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">t</span><span class="mclose">]</span></span></span></span> 为当前节点包含的区间，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 为当前节点的编号，则：</p>
+<ol>
+<li><strong>当前区间为询问区间的子集时直接返回当前区间的和。</strong></li>
+<li><strong>如果左儿子代表的区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mi>m</mi><mi>i</mi><mi>d</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[s, mid]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mclose">]</span></span></span></span> 与询问区间有交集，则递归查询左儿子。</strong></li>
+<li><strong>如果右儿子代表的区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>m</mi><mi>i</mi><mi>d</mi><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>t</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[mid + 1, t]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">t</span><span class="mclose">]</span></span></span></span> 与询问区间有交集，则递归查询右儿子。</strong></li>
+</ol>
+<h2 id="区间修改与懒惰标记"><a class="anchor" href="#区间修改与懒惰标记">#</a> 区间修改与懒惰标记</h2>
+<p>如果要求修改区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> ，把所有包含在区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 中的节点都遍历、修改一次，时间复杂度无法承受。</p>
+<p>==「懒惰标记」== 就是通过延迟对节点信息的更改，从而减少可能不必要的操作次数。每次执行修改时，<strong>通过打标记的方法表明该节点对应的区间在某一次操作中被更改，但不更新该节点的子节点的信息。实质性的修改则在下一次访问带有标记的节点时才进行</strong>。</p>
+<p>实现中修改与查询时：</p>
+<ol>
+<li><strong>当前区间为修改区间的子集时直接修改当前节点的值，然后打标记，结束修改。</strong></li>
+<li><strong>如果当前节点的懒惰标记非空，则更新当前节点两个子节点的值和懒惰标记值，然后将标记下传给子节点并清空当前节点的标记。</strong></li>
+</ol>
+<h2 id="实现"><a class="anchor" href="#实现">#</a> 实现</h2>
+<p><strong>区间加、区间乘、区间求和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>o</mi><mi>d</mi><mi>e</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">Code:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></strong></p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">typedef</span> <span class="token keyword">long</span> <span class="token keyword">long</span> ll<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">const</span> ll N <span class="token operator">=</span> <span class="token number">1e6</span> <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">,</span> M <span class="token operator">=</span> <span class="token number">4e6</span> <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>ll a<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span> d<span class="token punctuation">[</span>M<span class="token punctuation">]</span><span class="token punctuation">,</span> mult<span class="token punctuation">[</span>M<span class="token punctuation">]</span><span class="token punctuation">,</span> add<span class="token punctuation">[</span>M<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">//a: 原数组 d: 线段树 mult: 乘法懒惰标记 add: 加法懒惰标记 </span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre>ll <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// 快读 </span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>	ll x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">bool</span> s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">char</span> c <span class="token operator">=</span> <span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>	<span class="token keyword">while</span><span class="token punctuation">(</span>c <span class="token operator">&lt;</span> <span class="token char">'0'</span> <span class="token operator">||</span> c <span class="token operator">></span> <span class="token char">'9'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">if</span><span class="token punctuation">(</span>c<span class="token operator">==</span><span class="token char">'-'</span><span class="token punctuation">)</span> s <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> c <span class="token operator">=</span> <span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token char">'0'</span> <span class="token operator">&lt;=</span> c <span class="token operator">&amp;&amp;</span> c <span class="token operator">&lt;=</span> <span class="token char">'9'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>x <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">&lt;&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>x <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>c <span class="token operator">^</span> <span class="token number">48</span><span class="token punctuation">)</span><span class="token punctuation">;</span> c <span class="token operator">=</span> <span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>	<span class="token keyword">return</span> s <span class="token operator">?</span> <span class="token operator">-</span>x <span class="token operator">:</span> x<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="16"></td><td><pre></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token keyword">void</span> <span class="token function">Up</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>  <span class="token comment">// 计算节点 i 的区间和 </span></pre></td></tr><tr><td data-num="18"></td><td><pre></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token keyword">void</span> <span class="token function">Push_down</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> t<span class="token punctuation">)</span>  <span class="token comment">// 懒惰标记的维护 </span></pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>	<span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">1</span><span class="token punctuation">,</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>s <span class="token operator">+</span> t<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>	<span class="token comment">// 子节点的值 = 子节点的值 * 父节点乘法标记 + 子节点区间长度 * 父节点加法标记 </span></pre></td></tr><tr><td data-num="23"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>mult<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment">// 按先乘后加的优先级维护 </span></pre></td></tr><tr><td data-num="24"></td><td><pre>	<span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>		mult<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">*=</span> mult<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> mult<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">*=</span> mult<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>		add<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">*=</span> mult<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> add<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">*=</span> mult<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>		d<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">*=</span> mult<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> d<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">*=</span> mult<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>		mult<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment">// 清除标记 </span></pre></td></tr><tr><td data-num="29"></td><td><pre>	<span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>add<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment">// 加减 0 不改变结果，所以这里以标记值是否为 0 判断是否有标记</span></pre></td></tr><tr><td data-num="31"></td><td><pre>	<span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="32"></td><td><pre>		d<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">+=</span> add<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>mid <span class="token operator">-</span> s <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="33"></td><td><pre>		d<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">+=</span> add<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>t <span class="token operator">-</span> mid<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="34"></td><td><pre>		add<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">+=</span> add<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> add<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">+=</span> add<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="35"></td><td><pre>		add<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment">// 清除标记 </span></pre></td></tr><tr><td data-num="36"></td><td><pre>	<span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="37"></td><td><pre>	<span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="38"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="39"></td><td><pre></pre></td></tr><tr><td data-num="40"></td><td><pre><span class="token keyword">void</span> <span class="token function">Build</span><span class="token punctuation">(</span><span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> t<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span>  <span class="token comment">// 建树  s: 区间左端点 t: 区间右端点 i: 节点标号</span></pre></td></tr><tr><td data-num="41"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="42"></td><td><pre>	mult<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> </pre></td></tr><tr><td data-num="43"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>s <span class="token operator">==</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">return</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>  <span class="token comment">// 将节点赋值</span></pre></td></tr><tr><td data-num="44"></td><td><pre>	<span class="token keyword">int</span> mid <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>t <span class="token operator">-</span> s<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="45"></td><td><pre>	<span class="token function">Build</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 建立左子树</span></pre></td></tr><tr><td data-num="46"></td><td><pre>	<span class="token function">Build</span><span class="token punctuation">(</span>mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 建立右子树</span></pre></td></tr><tr><td data-num="47"></td><td><pre>	<span class="token function">Up</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="48"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="49"></td><td><pre></pre></td></tr><tr><td data-num="50"></td><td><pre><span class="token keyword">void</span> <span class="token function">Mult</span><span class="token punctuation">(</span><span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">,</span> <span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> t<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> ll v<span class="token punctuation">)</span>  <span class="token comment">// 区间乘  l: 操作区间左端点 r: 操作区间右端点 s: 所在区间左端点 t: 所在区间右端点 i: 节点标号 </span></pre></td></tr><tr><td data-num="51"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="52"></td><td><pre>	<span class="token keyword">int</span> mid <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>t <span class="token operator">-</span> s<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="53"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> s <span class="token operator">&amp;&amp;</span> t <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="54"></td><td><pre>	<span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="55"></td><td><pre>		mult<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*=</span> v<span class="token punctuation">;</span> add<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*=</span> v<span class="token punctuation">;</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*=</span> v<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="56"></td><td><pre>		<span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="57"></td><td><pre>	<span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="58"></td><td><pre>	<span class="token function">Push_down</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> s<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="59"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>mid <span class="token operator">>=</span> l<span class="token punctuation">)</span> <span class="token function">Mult</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> s<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 更新 i * 2 的节点</span></pre></td></tr><tr><td data-num="60"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>mid <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> <span class="token function">Mult</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">1</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 更新 i * 2 + 1 的节点</span></pre></td></tr><tr><td data-num="61"></td><td><pre>	<span class="token function">Up</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="62"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="63"></td><td><pre></pre></td></tr><tr><td data-num="64"></td><td><pre><span class="token keyword">void</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">,</span> <span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> t<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> ll v<span class="token punctuation">)</span>  <span class="token comment">// 区间加  l: 操作区间左端点 r: 操作区间右端点 s: 所在区间左端点 t: 所在区间右端点 i: 节点标号 </span></pre></td></tr><tr><td data-num="65"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="66"></td><td><pre>	<span class="token keyword">int</span> mid <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>t <span class="token operator">-</span> s<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="67"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> s <span class="token operator">&amp;&amp;</span> t <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="68"></td><td><pre>	<span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="69"></td><td><pre>		d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> v <span class="token operator">*</span> <span class="token punctuation">(</span>t <span class="token operator">-</span> s <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="70"></td><td><pre>		add<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> v<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="71"></td><td><pre>		<span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="72"></td><td><pre>	<span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="73"></td><td><pre>	<span class="token function">Push_down</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> s<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="74"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>mid <span class="token operator">>=</span> l<span class="token punctuation">)</span> <span class="token function">Add</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> s<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 更新 i * 2 的节点</span></pre></td></tr><tr><td data-num="75"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>mid <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> <span class="token function">Add</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">1</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 更新 i * 2 + 1 的节点</span></pre></td></tr><tr><td data-num="76"></td><td><pre>	<span class="token function">Up</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="77"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="78"></td><td><pre></pre></td></tr><tr><td data-num="79"></td><td><pre>ll <span class="token function">Get_sum</span><span class="token punctuation">(</span><span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">,</span> <span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> t<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span>  <span class="token comment">// 区间求和  l: 求和区间左端点 r: 求和区间右端点 s: 所在区间左端点 t: 所在区间右端点 i: 节点标号 </span></pre></td></tr><tr><td data-num="80"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="81"></td><td><pre>	<span class="token keyword">int</span> mid <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>t <span class="token operator">-</span> s<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> ll sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="82"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> s <span class="token operator">&amp;&amp;</span> t <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> <span class="token keyword">return</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="83"></td><td><pre>	<span class="token function">Push_down</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> s<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="84"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>mid <span class="token operator">>=</span> l<span class="token punctuation">)</span> sum <span class="token operator">+=</span> <span class="token function">Get_sum</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> s<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 更新 i * 2 的答案 </span></pre></td></tr><tr><td data-num="85"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>mid <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> sum <span class="token operator">+=</span> <span class="token function">Get_sum</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 更新 i * 2 + 1 的答案 </span></pre></td></tr><tr><td data-num="86"></td><td><pre>	<span class="token keyword">return</span> sum<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="87"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="88"></td><td><pre></pre></td></tr><tr><td data-num="89"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="90"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="91"></td><td><pre>	<span class="token keyword">int</span> op<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r<span class="token punctuation">;</span> ll v<span class="token punctuation">;</span>  <span class="token comment">//op: 操作类型 l: 操作区间左端点 r: 操作区间右端点 v: 修改值 </span></pre></td></tr><tr><td data-num="92"></td><td><pre>	n <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="93"></td><td><pre>	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 输入原数组 </span></pre></td></tr><tr><td data-num="94"></td><td><pre>	<span class="token function">Build</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 建树 </span></pre></td></tr><tr><td data-num="95"></td><td><pre>	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="96"></td><td><pre>	<span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="97"></td><td><pre>		op <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="98"></td><td><pre>		<span class="token keyword">if</span><span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment">// 区间乘</span></pre></td></tr><tr><td data-num="99"></td><td><pre>		<span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="100"></td><td><pre>			l <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="101"></td><td><pre>			<span class="token function">Mult</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="102"></td><td><pre>		<span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="103"></td><td><pre>		<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment">// 区间加</span></pre></td></tr><tr><td data-num="104"></td><td><pre>		<span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="105"></td><td><pre>			l <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="106"></td><td><pre>			<span class="token function">Add</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="107"></td><td><pre>		<span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="108"></td><td><pre>		<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>op <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span>  <span class="token comment">// 区间求和</span></pre></td></tr><tr><td data-num="109"></td><td><pre>		<span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="110"></td><td><pre>			l <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="111"></td><td><pre>			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld\n"</span><span class="token punctuation">,</span> <span class="token function">Get_sum</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="112"></td><td><pre>		<span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="113"></td><td><pre>	<span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="114"></td><td><pre>	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="115"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-03-27 16:43:52" itemprop="dateModified" datetime="2023-03-27T16:43:52+08:00">2023-03-27</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="5652 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="5652 支付宝">
+        <p>支付宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>5652 <i class="ic i-at"><em>@</em></i>悲剧并非终结，而是希望的起始。
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://5652fsft.github.io/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="线段树">https://5652fsft.github.io/OI/数据结构/线段树/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url" rel="prev" data-background-image="&#x2F;assets&#x2F;003.jpg" title="并查集">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 数据结构</span>
+  <h3>并查集</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/OI/%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF/" itemprop="url" rel="next" data-background-image="&#x2F;assets&#x2F;005.jpg" title="最短路">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 图论</span>
+  <h3>最短路</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text"> 建树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.</span> <span class="toc-text"> 区间查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%87%92%E6%83%B0%E6%A0%87%E8%AE%B0"><span class="toc-number">3.</span> <span class="toc-text"> 区间修改与懒惰标记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text"> 实现</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ST%E8%A1%A8/" rel="bookmark" title="ST表">ST表</a></li><li class="active"><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="bookmark" title="线段树">线段树</a></li><li><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="bookmark" title="并查集">并查集</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="5652"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">5652</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">8</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item bilibili" data-url="aHR0cHM6Ly9zcGFjZS5iaWxpYmlsaS5jb20vNTQ5NzI3Nzk3" title="https:&#x2F;&#x2F;space.bilibili.com&#x2F;549727797"><i class="ic i-bilibili"></i></span>
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tLzU2NTJmc2Z0" title="https:&#x2F;&#x2F;github.com&#x2F;5652fsft"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9xaW5sbmdsbmd5MQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;qinlnglngy1"><i class="ic i-twitter"></i></span>
+      <span class="exturl item pixiv" data-url="aHR0cHM6Ly93d3cucGl4aXYubmV0L3VzZXJzLzg3ODMxNDg4" title="https:&#x2F;&#x2F;www.pixiv.net&#x2F;users&#x2F;87831488"><i class="ic i-pixiv"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjEwOTMyOTYzMDBAcXEuY29t" title="mailto:1093296300@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/OI/%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2020 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">5652 @ 5652</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'OI/数据结构/线段树/',
+    favicon: {
+      show: "悲剧并非终结，而是希望的起始。",
+      hide: "5652's blogs"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,copy_tex: true,
+    katex: true,mermaid: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

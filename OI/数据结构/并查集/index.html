@@ -1,0 +1,425 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="悲剧并非终结，而是希望的起始。" href="https://5652fsft.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="悲剧并非终结，而是希望的起始。" href="https://5652fsft.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="悲剧并非终结，而是希望的起始。" href="https://5652fsft.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://5652fsft.github.io/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
+
+
+
+  <title>
+并查集 - 数据结构 - OI |
+5652 = 悲剧并非终结，而是希望的起始。</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">并查集
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-03-01 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">5652</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="/assets/003.jpg">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/OI/" itemprop="item" rel="index" title="分类于 OI"><span itemprop="name">OI</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="item" rel="index" title="分类于 数据结构"><span itemprop="name">数据结构</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://5652fsft.github.io/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="5652">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="悲剧并非终结，而是希望的起始。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>并查集是一种用于管理元素所属集合的数据结构，实现为一个森林，其中每棵树表示一个集合，树中的节点表示对应集合中的元素。</p>
+<p>并查集支持：</p>
+<ol>
+<li><strong>合并：合并两个元素所属集合（合并对应的树）</strong></li>
+<li><strong>查询：查询某个元素所属集合（查询对应的树的根节点），可用于判断两个元素是否属于同一集合</strong></li>
+<li><strong>删除</strong>：从一个集合中删除一个元素</li>
+<li><strong>移动</strong>：从一个集合中将一个元素移动到另一个集合</li>
+</ol>
+<h2 id="初始化"><a class="anchor" href="#初始化">#</a> 初始化</h2>
+<p>初始时，每个元素都位于一个单独的集合，表示为一棵只有根节点的树。方便起见，我们将根节点的父亲设为自己。</p>
+<h2 id="合并"><a class="anchor" href="#合并">#</a> 合并</h2>
+<p>要合并两棵树，只需要<strong>将一棵树的根节点连到另一棵树的根节点</strong>。</p>
+<p>合并时，选择哪棵树的根节点作为新树的根节点会影响未来操作的复杂度，可<strong>按秩合并</strong>（将<strong>节点较少</strong>或<strong>深度较小</strong>的树连到另一棵），以免发生退化。</p>
+<h2 id="查询"><a class="anchor" href="#查询">#</a> 查询</h2>
+<p>沿着树向上移动，直至找到根节点。</p>
+<p>查询过程中经过的每个元素都属于该集合，可<mark>路径压缩</mark>（<strong>将其直接连到根节点</strong>）以加快后续查询。</p>
+<p><strong>注意，若题目有撤销操作，此时再用路径压缩时间复杂度会很高。</strong></p>
+<h2 id="删除-移动"><a class="anchor" href="#删除-移动">#</a> 删除、移动</h2>
+<p>把要从原集合中删除的元素<strong>独立成一个新的集合</strong>，根节点设为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span></span></span></span> 。</p>
+<p>现在<strong>给元素取一个新的元素名称</strong>，旧的还存于树中的便不代表元素了，是根节点的话就做一个集合的代表，非根节点但是其它节点的祖先的话就成为后代节点路径压缩的跳板，是叶子节点的话就啥事没有了。这样就算达成了删除的操作。</p>
+<p>移动就是<strong>先从原集合中删除，后合并至新集合</strong>即可。</p>
+<h2 id="实现"><a class="anchor" href="#实现">#</a> 实现</h2>
+<p><strong>基础并查集（无注释） <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>o</mi><mi>d</mi><mi>e</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">Code:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></strong></p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>vector <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> f<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>vector <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> num<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>	<span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>		f<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>		num<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>	<span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>	<span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">==</span> x <span class="token operator">?</span> x <span class="token operator">:</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="16"></td><td><pre></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>	x <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">==</span> y<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>num<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">&lt;</span> num<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token function">swap</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>	f<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>	num<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+=</span> num<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>	<span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="26"></td><td><pre></pre></td></tr><tr><td data-num="27"></td><td><pre><span class="token keyword">bool</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> <span class="token function">find</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token function">find</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p><strong>可删除、移动、求和、求元素个数的并查集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>o</mi><mi>d</mi><mi>e</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">Code:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></strong></p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">typedef</span> <span class="token keyword">long</span> <span class="token keyword">long</span> ll<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment">// 所有根结点相同的结点位于同一集合中，根节点为集合的代表元素</span></pre></td></tr><tr><td data-num="4"></td><td><pre>vector <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> f<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>vector <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> t<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>vector <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> num<span class="token punctuation">;</span>  <span class="token comment">// 记录以该结点为根结点的树的节点数，用于优化，在合并时，将节点少的树连到到节点多的树下</span></pre></td></tr><tr><td data-num="7"></td><td><pre>vector <span class="token operator">&lt;</span>ll<span class="token operator">></span> sum<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">,</span> cnt<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre>	<span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>		f<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 每个节点各为一个集合</span></pre></td></tr><tr><td data-num="15"></td><td><pre>		t<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 元素名称，与元素编号无关</span></pre></td></tr><tr><td data-num="16"></td><td><pre>		num<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 每个结点各为一棵节点数为 1 的树</span></pre></td></tr><tr><td data-num="17"></td><td><pre>		sum<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 集合内所有元素之和 </span></pre></td></tr><tr><td data-num="18"></td><td><pre>	<span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>	cnt <span class="token operator">=</span> n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>	<span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="22"></td><td><pre></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">==</span> x <span class="token operator">?</span> x <span class="token operator">:</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>  <span class="token comment">// 查找根结点，同时路径压缩</span></pre></td></tr><tr><td data-num="24"></td><td><pre></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span>  <span class="token comment">// 合并</span></pre></td></tr><tr><td data-num="26"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>	x <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 查找根结点</span></pre></td></tr><tr><td data-num="28"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">==</span> y<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>	<span class="token comment">// 若不在同一集合，将节点少的树连到到节点多的树下</span></pre></td></tr><tr><td data-num="30"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>num<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">&lt;</span> num<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token function">swap</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="31"></td><td><pre>	f<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>  <span class="token comment">// 合并</span></pre></td></tr><tr><td data-num="32"></td><td><pre>	num<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+=</span> num<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="33"></td><td><pre>	sum<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+=</span> sum<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="34"></td><td><pre>	<span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="35"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="36"></td><td><pre></pre></td></tr><tr><td data-num="37"></td><td><pre><span class="token keyword">void</span> <span class="token function">del</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>  <span class="token comment">// 删除</span></pre></td></tr><tr><td data-num="38"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="39"></td><td><pre>	num<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="40"></td><td><pre>	sum<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">-=</span> x<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="41"></td><td><pre>	t<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">++</span>cnt<span class="token punctuation">;</span>  <span class="token comment">// 便于重新建立集合</span></pre></td></tr><tr><td data-num="42"></td><td><pre>	num<span class="token punctuation">[</span>t<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment">// 让 t [x] 建立独立的集合，节点数为 1</span></pre></td></tr><tr><td data-num="43"></td><td><pre>	sum<span class="token punctuation">[</span>t<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>  <span class="token comment">// 和为 x</span></pre></td></tr><tr><td data-num="44"></td><td><pre>	f<span class="token punctuation">[</span>t<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">// 初始化新集合</span></pre></td></tr><tr><td data-num="45"></td><td><pre>	<span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="46"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="47"></td><td><pre></pre></td></tr><tr><td data-num="48"></td><td><pre><span class="token keyword">void</span> <span class="token function">move</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token function">del</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">merge</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>  <span class="token comment">// 移动</span></pre></td></tr><tr><td data-num="49"></td><td><pre></pre></td></tr><tr><td data-num="50"></td><td><pre><span class="token keyword">int</span> <span class="token function">get_num</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> num<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>  <span class="token comment">// 返回所在集合元素个数</span></pre></td></tr><tr><td data-num="51"></td><td><pre></pre></td></tr><tr><td data-num="52"></td><td><pre>ll <span class="token function">get_sum</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> sum<span class="token punctuation">[</span><span class="token function">find</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>  <span class="token comment">// 返回所在集合所有元素之和</span></pre></td></tr><tr><td data-num="53"></td><td><pre></pre></td></tr><tr><td data-num="54"></td><td><pre><span class="token keyword">bool</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> <span class="token function">find</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token function">find</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>  <span class="token comment">// 判断两元素是否在同一集合内</span></pre></td></tr></table></figure><h1 id="可撤销并查集"><a class="anchor" href="#可撤销并查集">#</a> 可撤销并查集</h1>
+<p>可撤销并查集支持<strong>回退到上一次合并操作前的状态</strong>。</p>
+<p>由于路径压缩会破坏原先树形结构，使撤销十分困难。所以这里<strong>不使用路径压缩</strong>。</p>
+<p>用栈记录操作，回退时弹出栈顶。</p>
+<p><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>o</mi><mi>d</mi><mi>e</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">Code:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></strong></p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">typedef</span> pair <span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> P<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>stack <span class="token operator">&lt;</span>P<span class="token operator">></span> s<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">==</span> x <span class="token operator">?</span> x <span class="token operator">:</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>	x <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">==</span> y<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>num<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">&lt;</span> num<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token function">swap</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>	s<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>x<span class="token punctuation">,</span> num<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>	s<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>y<span class="token punctuation">,</span> f<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>	num<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+=</span> num<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>	f<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token keyword">void</span> <span class="token function">undo</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>	<span class="token keyword">int</span> u <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">,</span> v <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>second<span class="token punctuation">;</span> s<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>	f<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>	u <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">,</span> v <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>second<span class="token punctuation">;</span> s<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>	num<span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h1 id="带权并查集"><a class="anchor" href="#带权并查集">#</a> 带权并查集</h1>
+<p>带权并查集是<strong>有边权</strong>的并查集。</p>
+<h2 id="合并-2"><a class="anchor" href="#合并-2">#</a> 合并</h2>
+<p>将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span> 合并至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 时，易得  <code>val[px] = v + val[y] - val[x]</code></p>
+<p>故合并代码为：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> v<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>	<span class="token keyword">int</span> px <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> py <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>px <span class="token operator">==</span> py<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>	f<span class="token punctuation">[</span>px<span class="token punctuation">]</span> <span class="token operator">=</span> py<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>	val<span class="token punctuation">[</span>px<span class="token punctuation">]</span> <span class="token operator">=</span> v <span class="token operator">+</span> val<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">-</span> val<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h2 id="查询-2"><a class="anchor" href="#查询-2">#</a> 查询</h2>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>	<span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">==</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> x<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>	val<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+=</span> val<span class="token punctuation">[</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>	<span class="token keyword">return</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h1 id="扩展域并查集"><a class="anchor" href="#扩展域并查集">#</a> 扩展域并查集</h1>
+<p>扩展域并查集用于解决<strong>同时考虑多个有相互关系（如相互排斥）的集合</strong>的问题。</p>
+<p>建立多个并查集，用<strong>拓展个体</strong>把多个并查集联系起来。</p>
+<h2 id="拓展个体"><a class="anchor" href="#拓展个体">#</a> 拓展个体</h2>
+<p>将一个个体拆成多个。</p>
+<p>例如有两个集合对立，对于个体 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span> ，设 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">a+n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span> 对立。则：</p>
+<ol>
+<li>若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span> 对立，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>n</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a+n,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span> 在同一集合， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>+</mo><mi>n</mi><mo separator="true">,</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">b+n,a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span></span></span></span> 在同一集合。</li>
+<li>若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span> 为同类， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span> 在同一集合，且 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>n</mi><mo separator="true">,</mo><mi>b</mi><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">a+n,b+n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 在同一集合。</li>
+</ol>
+<p>同理，有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 个不同集合就可以将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span> 一直扩展到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mo stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">a+(k-1)\times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 。</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-03-27 16:44:10" itemprop="dateModified" datetime="2023-03-27T16:44:10+08:00">2023-03-27</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="5652 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="5652 支付宝">
+        <p>支付宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>5652 <i class="ic i-at"><em>@</em></i>悲剧并非终结，而是希望的起始。
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://5652fsft.github.io/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="并查集">https://5652fsft.github.io/OI/数据结构/并查集/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+    </div>
+    <div class="item right">
+      
+
+  <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" rel="next" data-background-image="&#x2F;assets&#x2F;004.jpg" title="线段树">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 数据结构</span>
+  <h3>线段树</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text"> 初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6"><span class="toc-number">2.</span> <span class="toc-text"> 合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.</span> <span class="toc-text"> 查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4-%E7%A7%BB%E5%8A%A8"><span class="toc-number">4.</span> <span class="toc-text"> 删除、移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.</span> <span class="toc-text"> 实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E6%92%A4%E9%94%80%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-number"></span> <span class="toc-text"> 可撤销并查集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%A6%E6%9D%83%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-number"></span> <span class="toc-text"> 带权并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6-2"><span class="toc-number">1.</span> <span class="toc-text"> 合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2-2"><span class="toc-number">2.</span> <span class="toc-text"> 查询</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%9F%9F%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-number"></span> <span class="toc-text"> 扩展域并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%E4%B8%AA%E4%BD%93"><span class="toc-number">1.</span> <span class="toc-text"> 拓展个体</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ST%E8%A1%A8/" rel="bookmark" title="ST表">ST表</a></li><li><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="bookmark" title="线段树">线段树</a></li><li class="active"><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="bookmark" title="并查集">并查集</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="5652"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">5652</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">8</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item bilibili" data-url="aHR0cHM6Ly9zcGFjZS5iaWxpYmlsaS5jb20vNTQ5NzI3Nzk3" title="https:&#x2F;&#x2F;space.bilibili.com&#x2F;549727797"><i class="ic i-bilibili"></i></span>
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tLzU2NTJmc2Z0" title="https:&#x2F;&#x2F;github.com&#x2F;5652fsft"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9xaW5sbmdsbmd5MQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;qinlnglngy1"><i class="ic i-twitter"></i></span>
+      <span class="exturl item pixiv" data-url="aHR0cHM6Ly93d3cucGl4aXYubmV0L3VzZXJzLzg3ODMxNDg4" title="https:&#x2F;&#x2F;www.pixiv.net&#x2F;users&#x2F;87831488"><i class="ic i-pixiv"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjEwOTMyOTYzMDBAcXEuY29t" title="mailto:1093296300@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2020 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">5652 @ 5652</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'OI/数据结构/并查集/',
+    favicon: {
+      show: "悲剧并非终结，而是希望的起始。",
+      hide: "5652's blogs"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,copy_tex: true,
+    katex: true,mermaid: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
