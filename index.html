@@ -100,7 +100,11 @@
         </div>
       </li>
       <li class="item search">
-        <i class="ic i-search"></i>
+        <div class="nav-search">
+          <i class="ic i-search"></i>
+          <input type="text" class="nav-search-input" placeholder="文章搜索">
+          <div class="nav-search-dropdown"></div>
+        </div>
       </li>
     </ul>
   </div>
@@ -109,12 +113,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?70037"></li>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?648201"></li>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?564031"></li>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?336893"></li>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?251518"></li>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?912105"></li>
+          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?970973"></li>
+          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?393677"></li>
+          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?216662"></li>
+          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?911369"></li>
+          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?425999"></li>
+          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?938781"></li>
         </ul>
       </div>
     </header>
@@ -258,189 +262,6 @@ import cv2import uiautomator2 as...
         
 <article class="item">
   <div class="cover">
-    <a href="/OI/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/" itemprop="url" title="多重背包"><img data-src="/assets/001.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2023-03-01 12:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
-  </span>
-</div>
-
-    <h3><a href="/OI/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/" itemprop="url" title="多重背包">多重背包</a></h3>
-    <div class="excerpt">
-        多重背包问题题意概要：
-
-共有 nnn 种物品，其中对于第 iii 个物品共有 sis_isi​ 个，每个的代价为 wiw_iwi​ ，价值为 viv_ivi​ 。求在最大能承受代价 mmm 内能获得的最大价值
-
-所谓「多重」就是在 01 背包上加一层个数的循环。但这样肯定会爆 TLE ，所以需要优化。
-# 二进制优化
-∀n∈N+\forall n\in \mathbb{N_{+}}∀n∈N+​ 可以被分解成 1,2,4,…,2k−1,n−2k+11,2,4,…,2^{k-1},n-2^k+11,2,4,…,2k−1,n−2k+1 的和的形式。其中 kkk 为满足...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/OI/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
-      </span>
-    </div>
-    <a href="/OI/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/" itemprop="url" title="多重背包" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ST%E8%A1%A8/" itemprop="url" title="ST表"><img data-src="/assets/002.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2023-03-01 12:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
-  </span>
-</div>
-
-    <h3><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ST%E8%A1%A8/" itemprop="url" title="ST表">ST表</a></h3>
-    <div class="excerpt">
-        ST 表是用于解决可重复贡献问题的离线数据结构。
-用 ST 表求解需要运算满足结合律，不支持修改操作，因为每次修改后都要重新预处理。
-若题目是可重复贡献问题，且运算满足结合律、无需修改操作，则建议使用 ST 表。
-
-可重复贡献问题是指对于运算 $\mathrm {opt} $ ，满足 x opt x=xx\ \mathrm{opt}\ x=xx opt x=x ，则对应的区间询问就是一个可重复贡献问题。
-若不满足，则求值时采用的预处理区间重叠，会导致重叠部分被计算两次，产生错误。
-
-ST 表基于倍增思想，可以 O(nlog⁡n)O(n\log n)O(nlogn) 预处理，...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><i class="ic i-flag"></i>数据结构</a>
-      </span>
-    </div>
-    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ST%E8%A1%A8/" itemprop="url" title="ST表" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url" title="并查集"><img data-src="/assets/003.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2023-03-01 12:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
-  </span>
-</div>
-
-    <h3><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url" title="并查集">并查集</a></h3>
-    <div class="excerpt">
-        并查集是一种用于管理元素所属集合的数据结构，实现为一个森林，其中每棵树表示一个集合，树中的节点表示对应集合中的元素。
-并查集支持：
-
-合并：合并两个元素所属集合（合并对应的树）
-查询：查询某个元素所属集合（查询对应的树的根节点），可用于判断两个元素是否属于同一集合
-删除：从一个集合中删除一个元素
-移动：从一个集合中将一个元素移动到另一个集合
-
-# 初始化
-初始时，每个元素都位于一个单独的集合，表示为一棵只有根节点的树。方便起见，我们将根节点的父亲设为自己。
-#...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><i class="ic i-flag"></i>数据结构</a>
-      </span>
-    </div>
-    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url" title="并查集" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" title="线段树"><img data-src="/assets/004.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2023-03-01 12:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
-  </span>
-</div>
-
-    <h3><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" title="线段树">线段树</a></h3>
-    <div class="excerpt">
-        线段树是用来维护区间信息的数据结构。
-线段树可在 O(log⁡n)O(\log n)O(logn) 的时间复杂度内实现：
-单点修改、区间修改（区间加、区间乘、区间赋值等）、区间查询（区间求和、区间最值等）等操作。
-线段树将每个长度不为 111 的区间划分成左右两个区间递归求解，把整个线段划分为一个树形结构，通过合并左右两区间信息来求得该区间的信息。这样可方便进行大部分的区间操作。
-# 建树
-设线段树的根节点编号为 111 ，用数组 ddd 来保存我们的线段树， did_idi​ 用来保存线段树上编号为 iii 的节点的值（这里每个节点所维护的值就是这个节点所表示的区间总和）。
-did_idi​...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><i class="ic i-flag"></i>数据结构</a>
-      </span>
-    </div>
-    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" title="线段树" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/OI/%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" itemprop="url" title="最小生成树"><img data-src="/assets/006.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2023-03-01 12:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
-  </span>
-</div>
-
-    <h3><a href="/OI/%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" itemprop="url" title="最小生成树">最小生成树</a></h3>
-    <div class="excerpt">
-        # 定义及性质
-如果连通图的一个子图是一棵包含所有顶点的树，则该子图称为其的生成树。
-生成树是连通图的包含图中的所有顶点的极小连通子图，无环，只有 n−1n-1n−1 条边。
-图的生成树不唯一。从不同的顶点出发进行遍历，可得到不同的生成树。
-无向连通图的最小生成树为边权和最小的生成树。
-# 算法实现
-常见的最小生成树算法有 Kruskal 算法和 Prim 算法。
-Kruskal 的时间复杂度为 O(mlog⁡m)O(m\log m)O(mlogm) ，适合稀疏图。
-暴力 Prim 的时间复杂度为 O(n2+m)O(n^2+m)O(n2+m) ，适合于稠密图。
-堆优化 Prim 类似...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/OI/%E5%9B%BE%E8%AE%BA/" itemprop="url" title="图论"><i class="ic i-flag"></i>图论</a>
-      </span>
-    </div>
-    <a href="/OI/%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" itemprop="url" title="最小生成树" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
     <a href="/OI/%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF/" itemprop="url" title="最短路"><img data-src="/assets/005.jpg"></a>
   </div>
   <div class="info">
@@ -497,6 +318,189 @@ O(mn)O(mn)O(mn)
       </span>
     </div>
     <a href="/OI/%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF/" itemprop="url" title="最短路" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/OI/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/" itemprop="url" title="多重背包"><img data-src="/assets/001.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-03-01 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
+  </span>
+</div>
+
+    <h3><a href="/OI/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/" itemprop="url" title="多重背包">多重背包</a></h3>
+    <div class="excerpt">
+        多重背包问题题意概要：
+
+共有 nnn 种物品，其中对于第 iii 个物品共有 sis_isi​ 个，每个的代价为 wiw_iwi​ ，价值为 viv_ivi​ 。求在最大能承受代价 mmm 内能获得的最大价值
+
+所谓「多重」就是在 01 背包上加一层个数的循环。但这样肯定会爆 TLE ，所以需要优化。
+# 二进制优化
+∀n∈N+\forall n\in \mathbb{N_{+}}∀n∈N+​ 可以被分解成 1,2,4,…,2k−1,n−2k+11,2,4,…,2^{k-1},n-2^k+11,2,4,…,2k−1,n−2k+1 的和的形式。其中 kkk 为满足...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/OI/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
+      </span>
+    </div>
+    <a href="/OI/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/" itemprop="url" title="多重背包" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" title="线段树"><img data-src="/assets/004.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-03-01 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
+  </span>
+</div>
+
+    <h3><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" title="线段树">线段树</a></h3>
+    <div class="excerpt">
+        线段树是用来维护区间信息的数据结构。
+线段树可在 O(log⁡n)O(\log n)O(logn) 的时间复杂度内实现：
+单点修改、区间修改（区间加、区间乘、区间赋值等）、区间查询（区间求和、区间最值等）等操作。
+线段树将每个长度不为 111 的区间划分成左右两个区间递归求解，把整个线段划分为一个树形结构，通过合并左右两区间信息来求得该区间的信息。这样可方便进行大部分的区间操作。
+# 建树
+设线段树的根节点编号为 111 ，用数组 ddd 来保存我们的线段树， did_idi​ 用来保存线段树上编号为 iii 的节点的值（这里每个节点所维护的值就是这个节点所表示的区间总和）。
+did_idi​...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><i class="ic i-flag"></i>数据结构</a>
+      </span>
+    </div>
+    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" title="线段树" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ST%E8%A1%A8/" itemprop="url" title="ST表"><img data-src="/assets/002.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-03-01 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
+  </span>
+</div>
+
+    <h3><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ST%E8%A1%A8/" itemprop="url" title="ST表">ST表</a></h3>
+    <div class="excerpt">
+        ST 表是用于解决可重复贡献问题的离线数据结构。
+用 ST 表求解需要运算满足结合律，不支持修改操作，因为每次修改后都要重新预处理。
+若题目是可重复贡献问题，且运算满足结合律、无需修改操作，则建议使用 ST 表。
+
+可重复贡献问题是指对于运算 $\mathrm {opt} $ ，满足 x opt x=xx\ \mathrm{opt}\ x=xx opt x=x ，则对应的区间询问就是一个可重复贡献问题。
+若不满足，则求值时采用的预处理区间重叠，会导致重叠部分被计算两次，产生错误。
+
+ST 表基于倍增思想，可以 O(nlog⁡n)O(n\log n)O(nlogn) 预处理，...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><i class="ic i-flag"></i>数据结构</a>
+      </span>
+    </div>
+    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ST%E8%A1%A8/" itemprop="url" title="ST表" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/OI/%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" itemprop="url" title="最小生成树"><img data-src="/assets/006.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-03-01 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
+  </span>
+</div>
+
+    <h3><a href="/OI/%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" itemprop="url" title="最小生成树">最小生成树</a></h3>
+    <div class="excerpt">
+        # 定义及性质
+如果连通图的一个子图是一棵包含所有顶点的树，则该子图称为其的生成树。
+生成树是连通图的包含图中的所有顶点的极小连通子图，无环，只有 n−1n-1n−1 条边。
+图的生成树不唯一。从不同的顶点出发进行遍历，可得到不同的生成树。
+无向连通图的最小生成树为边权和最小的生成树。
+# 算法实现
+常见的最小生成树算法有 Kruskal 算法和 Prim 算法。
+Kruskal 的时间复杂度为 O(mlog⁡m)O(m\log m)O(mlogm) ，适合稀疏图。
+暴力 Prim 的时间复杂度为 O(n2+m)O(n^2+m)O(n2+m) ，适合于稠密图。
+堆优化 Prim 类似...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/OI/%E5%9B%BE%E8%AE%BA/" itemprop="url" title="图论"><i class="ic i-flag"></i>图论</a>
+      </span>
+    </div>
+    <a href="/OI/%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" itemprop="url" title="最小生成树" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url" title="并查集"><img data-src="/assets/003.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2023-03-01 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-03-01T12:00:00+08:00">2023-03-01</time>
+  </span>
+</div>
+
+    <h3><a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url" title="并查集">并查集</a></h3>
+    <div class="excerpt">
+        并查集是一种用于管理元素所属集合的数据结构，实现为一个森林，其中每棵树表示一个集合，树中的节点表示对应集合中的元素。
+并查集支持：
+
+合并：合并两个元素所属集合（合并对应的树）
+查询：查询某个元素所属集合（查询对应的树的根节点），可用于判断两个元素是否属于同一集合
+删除：从一个集合中删除一个元素
+移动：从一个集合中将一个元素移动到另一个集合
+
+# 初始化
+初始时，每个元素都位于一个单独的集合，表示为一棵只有根节点的树。方便起见，我们将根节点的父亲设为自己。
+#...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><i class="ic i-flag"></i>数据结构</a>
+      </span>
+    </div>
+    <a href="/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url" title="并查集" class="btn">more...</a>
   </div>
 </article>
 

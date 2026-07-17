@@ -2035,22 +2035,20 @@ const loadComments = function () {
 }
 
 const localSearch = function(pjax) {
-  if(!siteSearch) {
-    siteSearch = BODY.createChild('div', {
-      id: 'search',
-      innerHTML: '<div class="inner"><div class="header"><span class="icon"><i class="ic i-search"></i></span><div class="search-input-container"><input class="search-input" type="text" placeholder="' + LOCAL.search.placeholder + '"></div><span class="close-btn"><i class="ic i-times-circle"></i></span></div><div class="results"><div class="inner"><div id="search-stats"></div><div id="search-hits"></div><div id="search-pagination"></div></div></div></div>'
-    });
-  }
-
   var searchData = [];
   var searchIndex = {};
+  var dropdown = $('.nav-search-dropdown');
+  var input = $('.nav-search-input');
+
+  if(!dropdown || !input)
+    return;
 
   var fetchIndex = function() {
     return fetch(CONFIG.root + 'search.json').then(function(resp) {
       return resp.json();
     }).then(function(data) {
       searchData = data;
-      searchData.forEach(function(item, i) {
+      searchData.forEach(function(item) {
         var words = (item.title + ' ' + item.content + ' ' + item.categories.join(' ') + ' ' + item.tags.join(' ')).toLowerCase();
         searchIndex[item.path] = words;
       });
@@ -2059,66 +2057,56 @@ const localSearch = function(pjax) {
 
   var doSearch = function(query) {
     if(!query) {
-      $('#search-hits').innerHTML = '';
-      $('#search-stats').innerHTML = '';
+      dropdown.innerHTML = '';
+      dropdown.classList.remove('active');
       return;
     }
     var q = query.toLowerCase().trim();
     var results = searchData.filter(function(item) {
       return searchIndex[item.path] && searchIndex[item.path].indexOf(q) > -1;
     });
-    var stats = LOCAL.search.stats.replace(/\$\{hits}/, results.length).replace(/\$\{time}/, 0);
-    $('#search-stats').innerHTML = stats + '<hr>';
     if(results.length === 0) {
-      $('#search-hits').innerHTML = '<div id="hits-empty">' + LOCAL.search.empty.replace(/\$\{query}/, query) + '</div>';
+      dropdown.innerHTML = '<div class="empty">' + LOCAL.search.empty.replace(/\$\{query}/, query) + '</div>';
+      dropdown.classList.add('active');
       return;
     }
     var html = '';
-    results.forEach(function(item) {
+    var maxResults = 8;
+    results.slice(0, maxResults).forEach(function(item) {
       var cats = item.categories.length ? '<span>' + item.categories.join('<i class="ic i-angle-right"></i>') + '</span>' : '';
       var title = item.title;
       var idx = title.toLowerCase().indexOf(q);
       if(idx > -1) {
         title = title.substring(0, idx) + '<em>' + title.substring(idx, idx + q.length) + '</em>' + title.substring(idx + q.length);
       }
-      html += '<a href="' + CONFIG.root + item.path + '" class="item">' + cats + title + '</a>';
+      html += '<a href="' + CONFIG.root + item.path + '" class="item"><div class="item-inner">' + cats + title + '</div></a>';
     });
-    $('#search-hits').innerHTML = html;
+    dropdown.innerHTML = html;
+    dropdown.classList.add('active');
   };
 
   fetchIndex();
 
-  var searchInput = $('.search-input');
-  if(searchInput) {
-    searchInput.addEventListener('input', function() {
-      doSearch(this.value);
-    });
-  }
-
-  $.each('.search', function(element) {
-    element.addEventListener('click', function() {
-      document.body.style.overflow = 'hidden';
-      transition(siteSearch, 'shrinkIn', function() {
-          searchInput && searchInput.focus();
-        });
-    });
+  input.addEventListener('input', function(e) {
+    doSearch(e.target.value);
+    e.stopPropagation();
   });
 
-  const onPopupClose = function() {
-    document.body.style.overflow = '';
-    transition(siteSearch, 0);
-  };
+  input.addEventListener('focus', function() {
+    if(this.value) doSearch(this.value);
+  });
 
-  siteSearch.addEventListener('click', function(event) {
-    if (event.target === siteSearch) {
-      onPopupClose();
+  document.addEventListener('click', function(e) {
+    var navSearch = $('.nav-search');
+    if(navSearch && !navSearch.contains(e.target)) {
+      dropdown.classList.remove('active');
     }
   });
-  $('.close-btn').addEventListener('click', onPopupClose);
-  window.addEventListener('pjax:success', onPopupClose);
-  window.addEventListener('keyup', function(event) {
-    if (event.key === 'Escape') {
-      onPopupClose();
+
+  input.addEventListener('keydown', function(e) {
+    if(e.key === 'Escape') {
+      dropdown.classList.remove('active');
+      input.blur();
     }
   });
 };
