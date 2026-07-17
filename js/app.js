@@ -1159,15 +1159,13 @@ const Loader = {
 }
 
 const changeTheme = function(type) {
-  var btn = $('.theme .ic')
+  var toggle = $('.theme-toggle')
   if(type == 'dark') {
     HTML.attr('data-theme', type);
-    btn.removeClass('i-sun')
-    btn.addClass('i-moon')
+    toggle.addClass('night');
   } else {
     HTML.attr('data-theme', null);
-    btn.removeClass('i-moon');
-    btn.addClass('i-sun');
+    toggle.removeClass('night');
   }
 }
 
@@ -1197,41 +1195,14 @@ const themeColorListener = function () {
   }
 
   $('.theme').addEventListener('click', function(event) {
-    var btn = event.currentTarget.child('.ic')
-
-    var neko = BODY.createChild('div', {
-      id: 'neko',
-      innerHTML: '<div class="planet"><div class="sun"></div><div class="moon"></div></div><div class="body"><div class="face"><section class="eyes left"><span class="pupil"></span></section><section class="eyes right"><span class="pupil"></span></section><span class="nose"></span></div></div>'
-    });
-
-    var hideNeko = function() {
-        transition(neko, {
-          delay: 2500,
-          opacity: 0
-        }, function() {
-          BODY.removeChild(neko)
-        });
-    }
-
-    if(btn.hasClass('i-sun')) {
-      var c = function() {
-          neko.addClass('dark');
-          changeTheme('dark');
-          store.set('theme', 'dark');
-          hideNeko();
-        }
+    var toggle = $('.theme-toggle');
+    if(toggle.hasClass('night')) {
+      changeTheme();
+      store.set('theme', 'light');
     } else {
-      neko.addClass('dark');
-      var c = function() {
-          neko.removeClass('dark');
-          changeTheme();
-          store.set('theme', 'light');
-          hideNeko();
-        }
+      changeTheme('dark');
+      store.set('theme', 'dark');
     }
-    transition(neko, 1, function() {
-      setTimeout(c, 210)
-    })
   });
 }
 
@@ -2063,9 +2034,100 @@ const loadComments = function () {
   }
 }
 
+const localSearch = function(pjax) {
+  if(!siteSearch) {
+    siteSearch = BODY.createChild('div', {
+      id: 'search',
+      innerHTML: '<div class="inner"><div class="header"><span class="icon"><i class="ic i-search"></i></span><div class="search-input-container"><input class="search-input" type="text" placeholder="' + LOCAL.search.placeholder + '"></div><span class="close-btn"><i class="ic i-times-circle"></i></span></div><div class="results"><div class="inner"><div id="search-stats"></div><div id="search-hits"></div><div id="search-pagination"></div></div></div></div>'
+    });
+  }
+
+  var searchData = [];
+  var searchIndex = {};
+
+  var fetchIndex = function() {
+    return fetch(CONFIG.root + 'search.json').then(function(resp) {
+      return resp.json();
+    }).then(function(data) {
+      searchData = data;
+      searchData.forEach(function(item, i) {
+        var words = (item.title + ' ' + item.content + ' ' + item.categories.join(' ') + ' ' + item.tags.join(' ')).toLowerCase();
+        searchIndex[item.path] = words;
+      });
+    });
+  };
+
+  var doSearch = function(query) {
+    if(!query) {
+      $('#search-hits').innerHTML = '';
+      $('#search-stats').innerHTML = '';
+      return;
+    }
+    var q = query.toLowerCase().trim();
+    var results = searchData.filter(function(item) {
+      return searchIndex[item.path] && searchIndex[item.path].indexOf(q) > -1;
+    });
+    var stats = LOCAL.search.stats.replace(/\$\{hits}/, results.length).replace(/\$\{time}/, 0);
+    $('#search-stats').innerHTML = stats + '<hr>';
+    if(results.length === 0) {
+      $('#search-hits').innerHTML = '<div id="hits-empty">' + LOCAL.search.empty.replace(/\$\{query}/, query) + '</div>';
+      return;
+    }
+    var html = '';
+    results.forEach(function(item) {
+      var cats = item.categories.length ? '<span>' + item.categories.join('<i class="ic i-angle-right"></i>') + '</span>' : '';
+      var title = item.title;
+      var idx = title.toLowerCase().indexOf(q);
+      if(idx > -1) {
+        title = title.substring(0, idx) + '<em>' + title.substring(idx, idx + q.length) + '</em>' + title.substring(idx + q.length);
+      }
+      html += '<a href="' + CONFIG.root + item.path + '" class="item">' + cats + title + '</a>';
+    });
+    $('#search-hits').innerHTML = html;
+  };
+
+  fetchIndex();
+
+  var searchInput = $('.search-input');
+  if(searchInput) {
+    searchInput.addEventListener('input', function() {
+      doSearch(this.value);
+    });
+  }
+
+  $.each('.search', function(element) {
+    element.addEventListener('click', function() {
+      document.body.style.overflow = 'hidden';
+      transition(siteSearch, 'shrinkIn', function() {
+          searchInput && searchInput.focus();
+        });
+    });
+  });
+
+  const onPopupClose = function() {
+    document.body.style.overflow = '';
+    transition(siteSearch, 0);
+  };
+
+  siteSearch.addEventListener('click', function(event) {
+    if (event.target === siteSearch) {
+      onPopupClose();
+    }
+  });
+  $('.close-btn').addEventListener('click', onPopupClose);
+  window.addEventListener('pjax:success', onPopupClose);
+  window.addEventListener('keyup', function(event) {
+    if (event.key === 'Escape') {
+      onPopupClose();
+    }
+  });
+};
+
 const algoliaSearch = function(pjax) {
-  if(CONFIG.search === null)
-    return
+  if(CONFIG.search === null) {
+    localSearch(pjax);
+    return;
+  }
 
   if(!siteSearch) {
     siteSearch = BODY.createChild('div', {
@@ -2089,7 +2151,6 @@ const algoliaSearch = function(pjax) {
     pjax.refresh($('#search-hits'));
   });
 
-  // Registering Widgets
   search.addWidgets([
     instantsearch.widgets.configure({
       hitsPerPage: CONFIG.search.hits.per_page || 10
@@ -2098,7 +2159,6 @@ const algoliaSearch = function(pjax) {
     instantsearch.widgets.searchBox({
       container           : '.search-input-container',
       placeholder         : LOCAL.search.placeholder,
-      // Hide default icons of algolia search
       showReset           : false,
       showSubmit          : false,
       showLoadingIndicator: false,
@@ -2160,20 +2220,18 @@ const algoliaSearch = function(pjax) {
 
   search.start();
 
-  // Handle and trigger popup window
   $.each('.search', function(element) {
     element.addEventListener('click', function() {
       document.body.style.overflow = 'hidden';
       transition(siteSearch, 'shrinkIn', function() {
           $('.search-input').focus();
-        }) // transition.shrinkIn
+        })
     });
   });
 
-  // Monitor main search box
   const onPopupClose = function() {
     document.body.style.overflow = '';
-    transition(siteSearch, 0); // "transition.shrinkOut"
+    transition(siteSearch, 0);
   };
 
   siteSearch.addEventListener('click', function(event) {
