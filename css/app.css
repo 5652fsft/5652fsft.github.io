@@ -1854,7 +1854,7 @@ main >.inner {
   background: var(--grey-2);
 }
 .nav-search .nav-search-dropdown .item .item-inner {
-  padding-left: 0.75rem;
+  padding-left: 0.5rem;
 }
 .nav-search .nav-search-dropdown .item span {
   display: block;
