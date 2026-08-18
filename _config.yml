@@ -64,6 +64,9 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  动态规划: dp
+  数据结构: data-structures
+  图论: graph-theory
 tag_map:
 
 # Metadata elements

@@ -1,13 +1,6 @@
 {% extends '_partials/layout.njk' %}
 
-{% block title %}
-{%- if is_month() %}
-{{page.year}} {{__('symbol.year')}} / {{ page.month}} {{__('symbol.month')}} -
-{% elif is_year() %}
-{{page.year}} {{__('symbol.year')}} -
-{%- endif %}
-{{ __('title.archive') }} |
-{% endblock %}
+{% block title %}{% endblock %}
 
 {% block header %}
   <h1 itemprop="name headline">
