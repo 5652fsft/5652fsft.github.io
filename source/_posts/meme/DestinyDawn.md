@@ -2,7 +2,7 @@
 title: DestinyDawn
 date: 2026-8-18 18:00:00
 categories: 
-- 整活
+- meme
 cover: assets/couple.jpg
 description: 用 Godot 开发的 3v3 回合制六边形战棋卡牌游戏，支持 Windows / Android 双端与局域网、跨网联机对战。
 ---

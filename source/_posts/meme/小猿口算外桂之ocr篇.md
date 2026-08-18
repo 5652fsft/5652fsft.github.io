@@ -2,7 +2,7 @@
 title: 小猿口算外桂之ocr篇
 date: 2024-10-18 12:00:00
 categories: 
-- 整活
+- meme
 cover: assets/007.jpg
 description: 使用安卓模拟器 + OpenCV + Tesseract OCR 识别题目数字，u2 控制模拟滑动自动作答小猿口算的脚本。
 math: true
