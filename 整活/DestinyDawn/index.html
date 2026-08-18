@@ -25,11 +25,12 @@
 
   
 
-<link rel="canonical" href="https://5652fsft.github.io/404">
+<link rel="canonical" href="https://5652fsft.github.io/%E6%95%B4%E6%B4%BB/DestinyDawn/">
 
 
 
   <title>
+DestinyDawn - 
 5652's blogs</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -57,8 +58,19 @@
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">Σ( ° △ °|||)︴404！
+  <h1 itemprop="name headline">DestinyDawn
   </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2026-08-18 18:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-08-18T18:00:00+08:00">2026-08-18</time>
+  </span>
+</div>
+
 
           </div>
         </div>
@@ -112,14 +124,7 @@
 
       </div>
       <div id="imgs" class="pjax">
-        <ul>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?485744"></li>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?838388"></li>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?291621"></li>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?565401"></li>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?772646"></li>
-          <li class="item" data-background-image="https://uploadstatic.mihoyo.com/bh3-wiki/2021/11/10/73514954/f229edd690e9d3787f6c1cc8acb71aea_3804293106756807065.jpg?522237"></li>
-        </ul>
+          <img src="/assets/couple.jpg">
       </div>
     </header>
     <div id="waves">
@@ -139,9 +144,123 @@
       <div class="inner">
         <div id="main" class="pjax">
           
-  <div class="page wrap">
-    <div class="notfound">Σ( ° △ °|||)︴404！</div>
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%B4%E6%B4%BB/" itemprop="item" rel="index" title="分类于 整活"><span itemprop="name">整活</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://5652fsft.github.io/%E6%95%B4%E6%B4%BB/DestinyDawn/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="5652">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="悲剧并非终结，而是希望的起始。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>在此介绍一下本人用 Godot 搓的回合制战棋卡牌游戏 —— <strong>《DestinyDawn》</strong>。</p>
+<p>本人革新派（狡辩：其实是高中牲时间不足）用了比较大量的 Vibe Coding ，项目有点史山，见谅</p>
+<p>《DestinyDawn》是一款 <strong>3v3 回合制策略游戏</strong>。每局从多名角色中挑选 3 人组队，在六边形地图上与对手展开对战。移动、攻击、释放技能、使用卡牌 —— 活用每回合的有限行动来赢得胜利。</p>
+<ul>
+<li><strong>回合制六边形战棋</strong>：在六边形格子上移动，讲究走位与站位</li>
+<li><strong>卡牌构筑</strong>：每回合抽牌，拖拽卡牌即可释放，不消耗角色行动次数</li>
+<li><strong>角色技能</strong>：每个角色都有独特的主动技能，带冷却回合，还有天赋系统</li>
+<li><strong>支持双端</strong>：Windows 完整功能，Android 完整玩法 + 触摸适配</li>
+</ul>
+<h2 id="游戏流程"><a class="anchor" href="#游戏流程">#</a> 游戏流程</h2>
+<ol>
+<li><strong>编队管理</strong>：从多名角色中选择 3 人组成队伍</li>
+<li><strong>卡组构筑</strong>：从多张卡牌中选择 8 张构成牌库</li>
+<li><strong>选择模式</strong>：单人游戏（对战 AI）、联机游戏</li>
+<li><strong>战斗</strong>：每回合先手顺序随机决定，双方轮流移动、攻击、释放技能，卡牌随时可独立释放，最后点击「结束回合」推进回合</li>
+</ol>
+<p><strong>胜负条件</strong>：全灭敌方所有角色即为胜利，结算界面还会展示双方伤害、治疗、卡牌使用和击杀统计。</p>
+<h2 id="操作方式"><a class="anchor" href="#操作方式">#</a> 操作方式</h2>
+<p><strong>Windows 端</strong>：鼠标左键选择角色 / 移动攻击 / 使用技能 / 拖拽卡牌，右键拖拽地图，滚轮缩放，F 键收起手牌，ESC 打开投降菜单。</p>
+<p><strong>Android 端</strong>：单指点击 / 拖拽操作，双指捏合缩放，双指拖动平移视角，「手牌」「菜单」按钮管理界面。</p>
+<h2 id="联机对战"><a class="anchor" href="#联机对战">#</a> 联机对战</h2>
+<ul>
+<li><strong>同一局域网</strong>：房间码自动显示本地 IP，直接加入</li>
+<li><strong>跨网联机（推荐）</strong>：使用 EasyTier（免费开源组网）或蒲公英（贝锐，免费 3 设备），双方加入同一虚拟网络，房间码自动识别虚拟 IP，输入房间码即可对局</li>
+</ul>
+<blockquote>
+<p>安卓端受移动 NAT 限制，跨网对局请使用上述组网方式；若连不上，检查双方防火墙放行 UDP 1145 端口。</p>
+</blockquote>
+<h2 id="下载"><a class="anchor" href="#下载">#</a> 下载</h2>
+<ul>
+<li><strong>GitHub 仓库</strong>：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLzU2NTJmc2Z0L0Rlc3RpbnlEYXdu">5652fsft/DestinyDawn</span></li>
+<li><strong>下载</strong>：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLzU2NTJmc2Z0L0Rlc3RpbnlEYXduL3JlbGVhc2Vz">GitHub Releases 页面</span></li>
+</ul>
+<p>Windows 版支持自动更新（检测新版本 → 下载 → 替换重启），更新下载采用 8 段并发，速度提升明显。网络不便直连 GitHub 时，可在设置里切换镜像更新通道。设置、编队、卡组都会自动保存到本地，重启游戏后保留。</p>
+<p>祝各位玩得开心，也欢迎提 Issue 和 PR 共同完善这款游戏</p>
+
   </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2026-08-18 22:08:49" itemprop="dateModified" datetime="2026-08-18T22:08:49+08:00">2026-08-18</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>5652 <i class="ic i-at"><em>@</em></i>悲剧并非终结，而是希望的起始。
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://5652fsft.github.io/%E6%95%B4%E6%B4%BB/DestinyDawn/" title="DestinyDawn">https://5652fsft.github.io/整活/DestinyDawn/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/%E6%95%B4%E6%B4%BB/%E7%A5%9E%E4%BA%BA%E7%AD%94%E9%A2%98%E5%8D%A1%E5%A1%AB%E6%B6%82%E5%8A%A9%E6%89%8B/" itemprop="url" rel="prev" data-background-image="&#x2F;assets&#x2F;seele.jpg" title="神人答题卡填涂助手">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 整活</span>
+  <h3>神人答题卡填涂助手</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
 
         </div>
         <div id="sidebar">
@@ -152,8 +271,12 @@
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text"> 游戏流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text"> 操作方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E6%9C%BA%E5%AF%B9%E6%88%98"><span class="toc-number">3.</span> <span class="toc-text"> 联机对战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">4.</span> <span class="toc-text"> 下载</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/%E6%95%B4%E6%B4%BB/%E5%B0%8F%E7%8C%BF%E5%8F%A3%E7%AE%97%E5%A4%96%E6%A1%82%E4%B9%8Bocr%E7%AF%87/" rel="bookmark" title="小猿口算外桂之ocr篇">小猿口算外桂之ocr篇</a></li><li><a href="/%E6%95%B4%E6%B4%BB/%E7%A5%9E%E4%BA%BA%E7%AD%94%E9%A2%98%E5%8D%A1%E5%A1%AB%E6%B6%82%E5%8A%A9%E6%89%8B/" rel="bookmark" title="神人答题卡填涂助手">神人答题卡填涂助手</a></li><li class="active"><a href="/%E6%95%B4%E6%B4%BB/DestinyDawn/" rel="bookmark" title="DestinyDawn">DestinyDawn</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -258,7 +381,7 @@
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '404',
+    path: '整活/DestinyDawn/',
     favicon: {
       show: "悲剧并非终结，而是希望的起始。",
       hide: "5652's blogs"

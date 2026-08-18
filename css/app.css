@@ -3547,6 +3547,13 @@ main >.inner {
 .segments > .item:hover {
   box-shadow: 0 0 2rem var(--box-bg-shadow);
 }
+.segments > .item:hover .info h3 {
+  margin-top: 0.625rem;
+}
+.segments > .item:hover .info .excerpt {
+  max-height: 5rem;
+  opacity: 1;
+}
 .segments .cover {
   width: 50%;
   margin-right: 1.5rem;
@@ -3605,7 +3612,16 @@ main >.inner {
   font-size: 1.125em;
 }
 .segments .info .excerpt {
-  display: none;
+  overflow: hidden;
+  font-size: 0.875em;
+  max-height: 0;
+  opacity: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  margin: 0.5rem 0 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 .segments > .item:nth-child(even) {
   flex-direction: row-reverse;
@@ -3755,9 +3771,6 @@ main >.inner {
   color: var(--primary-color) !important;
 }
 .page .notfound {
-  width: 18.75rem;
-  height: 22.625rem;
-  background: url("../images/404.png") no-repeat center bottom;
   text-align: center;
   margin: 6.25rem auto;
 }
