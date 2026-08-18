@@ -1,0 +1,119 @@
+#nav .right {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  .item {
+    padding: .625rem .5rem;
+    cursor: pointer;
+  }
+
+  .i-sun {
+    font-size: $font-size-large;
+  }
+}
+
+.nav-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .i-search {
+    font-size: $font-size-large;
+    margin-right: .25rem;
+  }
+
+  .nav-search-input {
+    width: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: $font-size-small;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: width .3s ease;
+
+    &::placeholder {
+      color: var(--grey-5);
+    }
+  }
+
+  &:hover .nav-search-input,
+  .nav-search-input:focus {
+    width: 7rem;
+    padding: .125rem .3125rem;
+    border-bottom: .0625rem solid var(--grey-4);
+    cursor: text;
+  }
+
+  .nav-search-dropdown {
+    position: absolute;
+    top: calc(100% + .3125rem);
+    right: 0;
+    width: 20rem;
+    max-height: 18.75rem;
+    overflow-y: auto;
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(.625rem);
+    -webkit-backdrop-filter: blur(.625rem);
+    border-radius: .5rem;
+    box-shadow: 0 .25rem 1rem rgba(0,0,0,.12);
+    display: none;
+    z-index: $zindex-3;
+
+    [data-theme="dark"] & {
+      background: rgba(34,34,34,.85);
+    }
+
+    &.active {
+      display: block;
+    }
+
+    .item {
+      display: block;
+      padding: .5rem .75rem;
+      font-size: $font-size-small;
+      color: var(--text-color);
+      border: none;
+      text-shadow: none;
+      the-transition();
+
+      &:hover {
+        background: var(--grey-2);
+      }
+
+      .item-inner {
+        padding-left: .5rem;
+      }
+
+      span {
+        display: block;
+        font-size: 70%;
+        color: var(--grey-5);
+        margin-bottom: .125rem;
+
+        i {
+          color: var(--grey-4);
+          margin: 0 .1875rem;
+        }
+      }
+
+      em {
+        font-style: normal;
+        color: var(--color-red);
+      }
+    }
+
+    .empty {
+      padding: 1rem;
+      text-align: center;
+      color: var(--grey-5);
+      font-size: $font-size-small;
+      text-shadow: none;
+    }
+  }
+}
+
+@import 'toggle';
+

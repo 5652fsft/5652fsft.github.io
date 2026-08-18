@@ -1,0 +1,47 @@
+<nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="{{ __('accessibility.nav_toggle') }}">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="{{ config.root }}" rel="start">{{ alternate or title }}</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <div class="theme-toggle">
+          <div class="toggle-track">
+            <div class="toggle-sun"></div>
+            <div class="toggle-moon">
+              <span class="crater"></span>
+              <span class="crater"></span>
+              <span class="crater"></span>
+            </div>
+            <div class="toggle-clouds">
+              <span class="cloud"></span>
+              <span class="cloud"></span>
+              <span class="cloud"></span>
+            </div>
+            <div class="toggle-stars">
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="item search">
+        <div class="nav-search">
+          <i class="ic i-search"></i>
+          <input type="text" class="nav-search-input" placeholder="{{ __('search.placeholder') }}">
+          <div class="nav-search-dropdown"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

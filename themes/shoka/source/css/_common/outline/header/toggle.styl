@@ -1,0 +1,160 @@
+.theme-toggle {
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.toggle-track {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.75rem;
+  height: 1.375rem;
+  background: #7ec8e3;
+  border-radius: 0.75rem;
+  box-shadow: inset 0 0.125rem 0.25rem rgba(0,0,0,0.2);
+  overflow: hidden;
+  transition: background 0.6s cubic-bezier(0.56, 1.35, 0.52, 1);
+}
+
+.night .toggle-track {
+  background: #19213a;
+}
+
+.toggle-sun {
+  position: absolute;
+  top: 50%;
+  left: 0.1875rem;
+  transform: translateY(-50%);
+  width: 0.9375rem;
+  height: 0.9375rem;
+  background: #ffc323;
+  border-radius: 50%;
+  box-shadow: 0 0 0.3125rem rgba(255, 195, 35, 0.6), inset -0.125rem -0.125rem 0.125rem rgba(0,0,0,0.15);
+  transition: all 0.6s cubic-bezier(0.56, 1.35, 0.52, 1);
+  z-index: 2;
+}
+
+.night .toggle-sun {
+  transform: translateY(-50%) translateX(1.375rem);
+  background: #c8d0dc;
+  box-shadow: 0 0 0.3125rem rgba(200, 208, 220, 0.4), inset -0.125rem -0.125rem 0.125rem rgba(0,0,0,0.2);
+}
+
+.toggle-moon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.toggle-moon .crater {
+  position: absolute;
+  background: rgba(150, 160, 180, 0.8);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.5s 0.1s;
+  box-shadow: inset 0 0 0.0625rem 0.0625rem rgba(0,0,0,0.2);
+}
+
+.night .toggle-moon .crater {
+  opacity: 1;
+}
+
+.toggle-moon .crater:nth-child(1) {
+  top: 0.1875rem;
+  left: 1.75rem;
+  width: 0.25rem;
+  height: 0.25rem;
+}
+
+.toggle-moon .crater:nth-child(2) {
+  top: 0.4375rem;
+  left: 1.5rem;
+  width: 0.375rem;
+  height: 0.375rem;
+}
+
+.toggle-moon .crater:nth-child(3) {
+  top: 0.6875rem;
+  left: 1.8125rem;
+  width: 0.25rem;
+  height: 0.25rem;
+}
+
+.toggle-clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.toggle-clouds .cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+  transition: all 0.6s cubic-bezier(0.56, 1.35, 0.52, 1);
+}
+
+.night .toggle-clouds .cloud {
+  opacity: 0;
+  transform: translateY(1.25rem);
+}
+
+.toggle-clouds .cloud:nth-child(1) {
+  right: -0.0625rem;
+  bottom: 0.125rem;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.toggle-clouds .cloud:nth-child(2) {
+  right: 0.1875rem;
+  bottom: -0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  opacity: 0.6;
+}
+
+.toggle-clouds .cloud:nth-child(3) {
+  right: 0.5rem;
+  bottom: -0.125rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  opacity: 0.4;
+}
+
+.toggle-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.toggle-stars .star {
+  position: absolute;
+  width: 0.1875rem;
+  height: 0.1875rem;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.night .toggle-stars .star {
+  opacity: 1;
+}
+
+.toggle-stars .star:nth-child(1) { top: 0.1875rem; left: 1.75rem; }
+.toggle-stars .star:nth-child(2) { top: 0.3125rem; left: 2.125rem; }
+.toggle-stars .star:nth-child(3) { top: 0.5rem; left: 1.625rem; }
+.toggle-stars .star:nth-child(4) { top: 0.625rem; left: 2rem; }
+.toggle-stars .star:nth-child(5) { top: 0.8125rem; left: 1.875rem; }
