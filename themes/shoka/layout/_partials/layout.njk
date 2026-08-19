@@ -35,8 +35,7 @@
           <div class="pjax">
           {% block header %}
             <a href="{{ config.root }}" class="logo" rel="start">
-              {%- if alternate %}<p class="artboard">{{ alternate }}</p>{%- endif %}
-              <h1 itemprop="name headline" class="title">{{ title }}</h1>
+              {%- if alternate %}<p class="artboard">{{ alternate }}'s blogs</p>{%- endif %}
             </a>
             {%- if subtitle %}
             <p class="meta" itemprop="description">= {{ subtitle }} =</p>
