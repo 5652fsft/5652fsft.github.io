@@ -1803,15 +1803,15 @@ main >.inner {
   outline: none;
   background: transparent;
   font-size: 0.875em;
-  color: var(--text-color);
+  color: currentColor;
   cursor: pointer;
   transition: width 0.3s ease;
 }
 .nav-search .nav-search-input::-moz-placeholder {
-  color: var(--grey-5);
+  color: currentColor;
 }
 .nav-search .nav-search-input::placeholder {
-  color: var(--grey-5);
+  color: currentColor;
 }
 .nav-search:hover .nav-search-input,
 .nav-search .nav-search-input:focus {
